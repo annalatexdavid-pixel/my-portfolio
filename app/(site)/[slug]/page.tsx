@@ -138,7 +138,7 @@ export default async function ProjectPage({ params }: Props) {
                           {parts.map(part => {
                             const hasExt = /\.\w+$/.test(part)
                             const num = hasExt ? part.replace(/\.\w+$/, '') : part
-                            const ext = hasExt ? part.match(/\.(\w+)$/)?.[1] : 'png'
+                            const ext = hasExt ? part.match(/\.(\w+)$/)?.[1] : 'webp'
                             const padded = num.padStart(3, '0')
                             const src = `/images/${project.slug}/image-${padded}.${ext}`
                             // eslint-disable-next-line @next/next/no-img-element
