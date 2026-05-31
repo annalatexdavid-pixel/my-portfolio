@@ -1,5 +1,6 @@
-import { createReader } from '@keystatic/core/reader'
-import keystaticConfig from '../keystatic.config'
+import fs from 'fs'
+import path from 'path'
+import { parse as parseYaml } from 'yaml'
 
 export type ProjectCategory = 'product' | 'brand' | 'visual' | 'motion'
 export type ProjectTemplate = 'product' | 'visual'
@@ -35,7 +36,13 @@ export interface SiteSettings {
   resumeUrl: string
 }
 
-const reader = createReader(process.cwd(), keystaticConfig)
+// ── Parse YAML frontmatter from .mdoc file ──────────────────────────────────
+function parseFrontmatter(fileContent: string): { data: any; body: string } {
+  const match = fileContent.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+  if (!match) return { data: {}, body: fileContent }
+  const data = parseYaml(match[1]) as any
+  return { data: data || {}, body: match[2] }
+}
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 function toProject(slug: string, e: any): Project {
@@ -63,19 +70,28 @@ function toProject(slug: string, e: any): Project {
   }
 }
 
+const PROJECTS_DIR = path.join(process.cwd(), 'content', 'projects')
+
 export async function getProjects(): Promise<Project[]> {
-  const all = await reader.collections.projects.all()
-  return all
-    .map(({ slug, entry }) => toProject(slug, entry))
-    .sort((a, b) => {
-      if (a.section !== b.section) return a.section === 'main' ? -1 : 1
-      return a.order - b.order
-    })
+  const files = fs.readdirSync(PROJECTS_DIR).filter(f => f.endsWith('.mdoc'))
+  const projects = files.map(file => {
+    const slug = file.replace(/\.mdoc$/, '')
+    const raw = fs.readFileSync(path.join(PROJECTS_DIR, file), 'utf8')
+    const { data } = parseFrontmatter(raw)
+    return toProject(slug, data)
+  })
+  return projects.sort((a, b) => {
+    if (a.section !== b.section) return a.section === 'main' ? -1 : 1
+    return a.order - b.order
+  })
 }
 
 export async function getProject(slug: string): Promise<Project | undefined> {
-  const entry = await reader.collections.projects.read(slug)
-  return entry ? toProject(slug, entry) : undefined
+  const file = path.join(PROJECTS_DIR, `${slug}.mdoc`)
+  if (!fs.existsSync(file)) return undefined
+  const raw = fs.readFileSync(file, 'utf8')
+  const { data } = parseFrontmatter(raw)
+  return toProject(slug, data)
 }
 
 export async function getMainProjects(): Promise<Project[]> {
@@ -86,30 +102,46 @@ export async function getOtherProjects(): Promise<Project[]> {
   return (await getProjects()).filter(p => p.section === 'other')
 }
 
-// Resolved rich-text document for the detail page body
-export async function getProjectContent(slug: string): Promise<any> {
-  const entry = await reader.collections.projects.read(slug)
-  if (!entry) return null
-  return entry.content()
-}
+// ── Rich-text content: still use Keystatic reader (only needed at build time) ─
+import { createReader } from '@keystatic/core/reader'
+import keystaticConfig from '../keystatic.config'
+const reader = createReader(process.cwd(), keystaticConfig)
 
-export async function getSettings(): Promise<SiteSettings> {
-  const s = await reader.singletons.settings.read()
-  return {
-    name: s?.name || 'Michelle Liu',
-    tagline: s?.tagline || '',
-    footerText: s?.footerText || '',
-    email: s?.email || '',
-    resumeUrl: s?.resumeUrl || '',
+export async function getProjectContent(slug: string): Promise<any> {
+  try {
+    const entry = await reader.collections.projects.read(slug)
+    if (!entry) return null
+    return entry.content()
+  } catch {
+    return null
   }
 }
 
-// Does a resolved document contain a mermaid code block?
+// ── Settings ────────────────────────────────────────────────────────────────
+const SETTINGS_FILE = path.join(process.cwd(), 'content', 'settings', 'index.yaml')
+
+export async function getSettings(): Promise<SiteSettings> {
+  try {
+    const raw = fs.readFileSync(SETTINGS_FILE, 'utf8')
+    const s = parseYaml(raw) as any
+    return {
+      name: s?.name || 'Michelle Liu',
+      tagline: s?.tagline || '',
+      footerText: s?.footerText || '',
+      email: s?.email || '',
+      resumeUrl: s?.resumeUrl || '',
+    }
+  } catch {
+    return { name: 'Michelle Liu', tagline: '', footerText: '', email: '', resumeUrl: '' }
+  }
+}
+
+// ── Mermaid detection ───────────────────────────────────────────────────────
 export function documentHasMermaid(doc: any): boolean {
   if (!Array.isArray(doc)) return false
   const walk = (nodes: any[]): boolean =>
     nodes.some(n => {
-      if (n?.type === 'code' && (n?.language === 'mermaid')) return true
+      if (n?.type === 'code' && n?.language === 'mermaid') return true
       return Array.isArray(n?.children) ? walk(n.children) : false
     })
   return walk(doc)
