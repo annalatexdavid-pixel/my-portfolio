@@ -48,7 +48,7 @@ export default async function AboutPage() {
         <div className="about-photo-col">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/about-photo.jpg"
+            src="/images/about-photo.webp"
             alt="Michelle Liu"
             className="about-photo"
             onError={undefined}

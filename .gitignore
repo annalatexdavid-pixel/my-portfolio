@@ -1,4 +1,5 @@
 .next/
 node_modules/
 .env.local
-public/images/
+.DS_Store
+**/.DS_Store
