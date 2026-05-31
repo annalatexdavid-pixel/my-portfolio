@@ -1,16 +1,7 @@
 import { config, collection, singleton, fields } from '@keystatic/core'
 
 export default config({
-  storage:
-    process.env.NODE_ENV === 'production'
-      ? {
-          kind: 'github',
-          repo: {
-            owner: process.env.NEXT_PUBLIC_GITHUB_OWNER!,
-            name: process.env.NEXT_PUBLIC_GITHUB_REPO!,
-          },
-        }
-      : { kind: 'local' },
+  storage: { kind: 'local' },
   ui: {
     brand: { name: 'Michelle Liu Portfolio' },
     navigation: {
