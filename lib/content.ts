@@ -7,6 +7,7 @@ export type ProjectTemplate = 'product' | 'visual'
 export interface Project {
   slug: string
   title: string
+  titleEn: string
   year: string
   description: string
   section: 'main' | 'other'
@@ -41,6 +42,7 @@ function toProject(slug: string, e: any): Project {
   return {
     slug,
     title: e.title || slug,
+    titleEn: e.titleEn || '',
     year: e.year || '',
     description: e.description || '',
     section: (e.section || 'main') as 'main' | 'other',

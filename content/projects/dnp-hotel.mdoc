@@ -1,10 +1,11 @@
 ---
-title: "[UI/UX] 讓數位護照比實體護照更快｜TC × DNP 日本飯店入住體驗"
-year: "2024"
-description: TC × 大日本印刷（DNP）跨國身份驗證場景。設計旅客以「護照 VC」完成日本飯店 Kiosk 無實體護照自助入住，並主導上線前的質化易用性研究。
+slug: ''
+title: '[UI/UX] 導入數位護照於產品｜DNP 大日本印刷合作專案'
+titleEn: 'Digital Passport Check-in — DNP Hotel Project'
+year: '2024'
+description: 設計旅客以「數位護照 」完成日本飯店 Kiosk 無實體護照自助入住，並主導上線前的質化易用性研究
 section: main
 order: 2
-imageCount: 0
 category: product
 template: product
 tags:
@@ -12,13 +13,15 @@ tags:
   - UX Research
   - Digital Identity
 outcome: 設計兩階段數位護照入住流程並主導上線前易用性研究，讓旅客用手機比掏實體護照更快完成飯店 Kiosk 自助驗證。
-outcomeEn: Designed a two-stage digital-passport check-in flow and led
-  pre-launch usability research, letting travelers self-verify at hotel kiosks
-  faster than with a physical passport.
-intro: 這是 TC 與大日本印刷 DNP 合作的數位身份驗證場景。我設計旅客以「護照 VC」完成日本飯店 Kiosk
+outcomeEn: >-
+  Designed a two-stage digital-passport check-in flow and led pre-launch
+  usability research, letting travelers self-verify at hotel kiosks faster than
+  with a physical passport.
+intro: >-
+  這是 TC 與大日本印刷 DNP 合作的數位身份驗證場景。我設計旅客以「護照 VC」完成日本飯店 Kiosk
   自助入住的體驗，讓入住流程不再依賴實體護照與櫃檯人工查驗，並主導上線前的質化易用性研究。
 role: Product Designer
-time: "2024"
+time: '2024'
 team: PM, DNP, Frontend
 skills:
   - UX Research
@@ -35,8 +38,8 @@ impactEn:
   - Led qualitative usability testing before launch.
   - Reduced uncertainty in a high-pressure kiosk scenario.
   - Clarified trust and privacy communication around passport VC.
+imageCount: 0
 ---
-
 ## 背景與商業脈絡
 
 日本飯店早已導入 Kiosk 自助機台，但**身份驗證這一段仍停留在「實體護照 + 人工確認」**：旅客得拿出護照、櫃檯影印登記、排隊等候；飯店端的 Kiosk 也因為需要人工判讀，無法真正降低成本。而且這套驗證是**一次性、不可複用**的——每次入住都得重新驗證護照。
@@ -54,8 +57,8 @@ impactEn:
 ## 挑戰：三道硬性難題
 
 1. **價值主張完全壓在「更快」上。** 數位護照如果沒有比「掏出實體護照」更快、更直覺，使用者就沒有任何理由切換。效率不是加分項，是這整件事成立的前提。
-2. **兩階段旅程之間，有一道天然的斷裂。** 最關鍵的準備（KYC）發生在出發前——低急迫、容易被延後、還要等 3–5 天審核；但價值兌現卻在現場——時間敏感、在排隊、容錯率極低。
-3. **信任門檻極高。** 我們要請旅客把最敏感的證件——護照——上傳給一個他可能從沒聽過的服務。
+1. **兩階段旅程之間，有一道天然的斷裂。** 最關鍵的準備（KYC）發生在出發前——低急迫、容易被延後、還要等 3–5 天審核；但價值兌現卻在現場——時間敏感、在排隊、容錯率極低。
+1. **信任門檻極高。** 我們要請旅客把最敏感的證件——護照——上傳給一個他可能從沒聽過的服務。
 
 ---
 
@@ -102,7 +105,6 @@ flowchart TB
 - **使用方式**：三步說清楚：上傳護照取得 VC → 掃描飯店 QR → 完成 check-in
 - **信任建立**：合作飯店品牌牆（官方背書）+ 隱私說明（資料只用於入住）
 - **行動**：Sticky CTA，依使用者狀態切換文案與行為
-
 
 更重要的是**狀態驅動**：頁面識別「未登入 / 已登入未持有護照 VC / 審核中 / 已完成」四種狀態，呈現對應內容即時更新。當使用者已取得護照 VC，就**收起所有說服性內容**，把版面讓給「掃描」——不對已轉換的使用者重複推銷。
 
@@ -186,8 +188,7 @@ flowchart TB
 用「使用頻率 × 是否有自助 check-in 經驗」兩個維度做 MECE 分群，優先招募最容易感受到價值的族群：
 
 - **高頻（≥ 2 次／年）**：**Primary（優先招募 4–5 人）** 最易感受效率提升、最易理解可重複使用價值 · **Secondary（觀察 2–3 人）** 觀察是否會因「更快」而轉換行為
-- **低頻（&lt; 2 次／年）**：**低優先** 有經驗但旅遊頻率低 · **排除** 團客／未使用自助流程
-
+- **低頻（< 2 次／年）**：**低優先** 有經驗但旅遊頻率低 · **排除** 團客／未使用自助流程
 
 ### 方法與決策框架
 

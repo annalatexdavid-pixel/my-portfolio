@@ -18,7 +18,7 @@ export default async function HomePage() {
   const withCovers = await Promise.all(
     (await getProjects()).map(async p => ({
       slug: p.slug,
-      title: p.title,
+      title: lang === 'en' && p.titleEn ? p.titleEn : p.title,
       year: p.year,
       category: p.category,
       section: p.section,

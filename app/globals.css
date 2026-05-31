@@ -25,7 +25,7 @@ html, body {
   padding: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+  font-family: var(--font-lato), var(--font-noto), "Noto Sans TC", "Helvetica Neue", Arial, sans-serif;
   font-size: var(--font-size-base);
   -webkit-font-smoothing: antialiased;
 }
@@ -242,6 +242,7 @@ a { color: inherit; text-decoration: none; }
   padding-top: 66%;   /* 3:2 */
   overflow: hidden;
   background: #eeeeee;
+  border-radius: 8px;
 }
 
 .project-card-image {
@@ -811,6 +812,35 @@ a { color: inherit; text-decoration: none; }
   color: var(--text);
 }
 
+/* ─── About page ─── */
+.about-page {
+  padding: 64px var(--side) 96px;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-content h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.about-photo-col {
+  position: sticky;
+  top: 100px;
+}
+
+.about-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ─── Contact page ─── */
 .contact-page {
   max-width: 720px;
@@ -885,12 +915,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── Footer ─── */
 .site-footer {
-  padding: 28px var(--side);
-  font-size: 12px;
-  background: #111111;
-  color: rgba(255,255,255,0.3);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  letter-spacing: 0.04em;
+  display: none;
 }
 
 /* ─── Home: shared section utilities ─── */
@@ -1123,13 +1148,13 @@ a { color: inherit; text-decoration: none; }
 
 .work-tabs {
   display: flex;
-  gap: 0;
+  gap: 6px;
 }
 
 .work-tab {
   background: none;
   border: 1px solid var(--border);
-  border-right: none;
+  border-radius: 999px;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -1140,8 +1165,6 @@ a { color: inherit; text-decoration: none; }
   transition: all 0.15s ease;
   line-height: 1;
 }
-
-.work-tab:last-child { border-right: 1px solid var(--border); }
 
 .work-tab:hover { color: var(--text); border-color: rgba(17,17,17,0.3); }
 
@@ -1251,8 +1274,8 @@ a { color: inherit; text-decoration: none; }
   background: #111111;
   border-top: none;
   border-bottom: none;
-  padding-top: 36px;
-  padding-bottom: 36px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .contact-cta-section .section-label {
@@ -1279,7 +1302,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .contact-cta-heading {
-  font-size: clamp(26px, 3vw, 36px);
+  font-size: clamp(20px, 2.2vw, 26px);
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.25;
@@ -1318,6 +1341,16 @@ a { color: inherit; text-decoration: none; }
   .project-detail,
   .contact-page {
     padding: 32px var(--side) 64px;
+  }
+
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-photo-col {
+    position: static;
+    max-width: 280px;
   }
 }
 

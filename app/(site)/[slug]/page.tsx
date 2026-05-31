@@ -41,12 +41,12 @@ export default async function ProjectPage({ params }: Props) {
 
   const showMermaid = documentHasMermaid(doc)
 
+  const displayTitle = lang === 'en' && project.titleEn ? project.titleEn : cleanTitle(project.title)
   const intro = project.intro || project.description
   const impact = lang === 'en' && project.impactEn.length ? project.impactEn : project.impact
   const infoRow = [
     ['ROLE', project.role],
     ['TIME', project.time],
-    ['TEAM', project.team],
     ['SKILL', project.skills.join(' · ')],
   ].filter(([, v]) => v)
 
@@ -67,7 +67,7 @@ export default async function ProjectPage({ params }: Props) {
   const related = await Promise.all(
     ranked.map(async p => ({
       slug: p.slug,
-      title: p.title,
+      title: lang === 'en' && p.titleEn ? p.titleEn : p.title,
       tags: p.tags,
       outcome: lang === 'en' && p.outcomeEn ? p.outcomeEn : p.outcome,
       coverImage: await getProjectCover(p.slug),
@@ -92,7 +92,7 @@ export default async function ProjectPage({ params }: Props) {
       <article className="project-detail">
         <header className="project-header">
           <p className="project-header-tags">{project.tags.join(' / ')}</p>
-          <h1 className="project-header-title">{cleanTitle(project.title)}</h1>
+          <h1 className="project-header-title">{displayTitle}</h1>
           {intro && <p className="project-header-desc">{intro}</p>}
         </header>
 

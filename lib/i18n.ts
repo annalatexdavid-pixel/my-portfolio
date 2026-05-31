@@ -100,20 +100,19 @@ const dict = {
     contact: {
       title: '關於我',
       bio: [
-        '我是劉于瑄（Michelle Liu），一位在台北工作的產品與視覺設計師。目前在美商 B2B SaaS 公司圖靈空間（Turing Space）擔任產品設計師，負責兩款數位信任產品的完整使用者體驗——從使用者研究、易用性測試，到設計系統的維護，並在敏捷流程中與 PM 和工程師緊密合作。',
+        '我是劉于瑄 Michelle Liu，目前在美商 B2B SaaS 公司（Turing Space）擔任產品設計師，負責兩款數位信任產品的完整使用者體驗——從使用者研究、易用性測試，到設計系統的維護，並在敏捷開發流程中與 PM 和工程師緊密合作。',
         '到目前為止，我累積了 3 次大型功能改版，以及 2 次從零打造新產品的完整經驗。我最大的優勢是廣度：多數設計師會專注在單一領域，而我能在品牌識別、UI/UX、數位行銷、零售包裝與動態設計之間自在切換，把一個專案完整地串起來。',
         '我畢業於國立台灣科技大學設計系，職涯走過電商、SaaS 科技、國際組織（APDI）、醫美與線上教育等不同產業，這些經歷讓我擁有一般設計師比較少見的跨領域視角。我對前端也不陌生，具備 HTML/CSS 基礎，並會用 Vibe Coding 直接做出原型、驗證介面。',
-        '我是個主動、抗壓、重視執行的人，始終相信好設計的標準是「有沒有真的解決問題」，而不只是畫面漂不漂亮。我也習慣跨部門溝通——能向工程師清楚說明設計背後的考量，也能和品牌端討論策略方向。',
-        '我目前開放全職產品設計職缺、品牌設計專案，以及部分接案合作。如果你正在打造的產品同時在乎設計品質與落地執行，歡迎與我聯繫。',
+        '我是個主動、抗壓、重視執行的人，始終相信好設計的標準是「有沒有真的解決問題」，而不只是畫面漂不漂亮。我也習慣跨部門溝通，能向 PM 和 RD 清楚說明設計背後的考量，也能和品牌端討論策略方向。',
       ],
       meta: {
         basedIn: ['所在地', '台灣・台北'],
-        role: ['現職', '產品設計師 ＠ 圖靈空間 Turing Space'],
+        role: ['現職', '產品設計師 ＠ Turing Space'],
         edu: ['學歷', '國立台灣科技大學 設計系'],
         lang: ['語言', '中文（母語）・英文（流利）'],
       },
       emailBtn: '寄信給我',
-      resumeBtn: '下載履歷',
+      resumeBtn: '個人簡歷',
     },
   },
 
@@ -197,15 +196,15 @@ const dict = {
       sub: ["I'm currently looking for a full-time product design role, along with select freelance collaborations.", 'If your team values design, grows at a fast pace, and works with an open, multidisciplinary mindset, I’d love the chance to join.'],
       btn1: 'Contact Me',
       btn2: 'Download Resume',
+      btn3: 'More About Me',
     },
     contact: {
       title: 'About Me',
       bio: [
-        "I'm Michelle Liu (劉于瑄), a product and visual designer based in Taipei. I'm currently a Product Designer at Turing Space, a US-founded B2B SaaS company, where I own the full experience for two digital-trust products — from user research and usability testing to maintaining the design system, working closely with PMs and engineers in an agile process.",
+        "I'm Michelle Liu (劉于瑄), currently a Product Designer at Turing Space, a US-founded B2B SaaS company, where I own the full experience for two digital-trust products — from user research and usability testing to maintaining the design system, working closely with PMs and engineers in an agile process.",
         "So far I've led 3 major feature redesigns and built 2 products from the ground up. My biggest strength is breadth: where most designers focus on a single area, I move comfortably across brand identity, UI/UX, digital marketing, retail packaging, and motion design — and pull a whole project together.",
-        "I graduated from the Department of Design at National Taiwan University of Science and Technology (NTUST). My career has run through e-commerce, SaaS tech, an international organisation (APDI), medical aesthetics, and online education — giving me a cross-disciplinary perspective most designers don't get to build. I'm comfortable with front-end too: I know HTML/CSS, and I use Vibe Coding to build prototypes and validate interfaces directly.",
-        "I'm proactive, calm under pressure, and focused on execution. I believe good design is measured by whether it actually solves the problem — not just how it looks. I'm also used to working across teams: I can clearly explain the thinking behind a design to engineers, and talk strategy with brand stakeholders.",
-        "I'm open to full-time product design roles, brand design projects, and select freelance work. If you're building something where both design quality and real-world execution matter, I'd love to hear from you.",
+        "I graduated from the Department of Design at NTUST. My career has run through e-commerce, SaaS tech, an international organisation (APDI), medical aesthetics, and online education — giving me a cross-disciplinary perspective most designers don't get to build. I'm comfortable with front-end too: HTML/CSS basics, and I use Vibe Coding to prototype and validate interfaces directly.",
+        "I'm proactive, calm under pressure, and focused on execution. I believe good design is measured by whether it actually solves the problem — not just how it looks. I'm used to working across teams: I can explain design decisions clearly to PMs and engineers, and discuss strategy with brand stakeholders.",
       ],
       meta: {
         basedIn: ['Based in', 'Taipei, Taiwan'],
