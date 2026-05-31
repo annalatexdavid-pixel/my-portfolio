@@ -1,0 +1,167 @@
+---
+slug: tcs-dashboard
+title: '[UI/UX] TCS 官網及Dashboard 設計｜用設計讓產品自己賣、自己續約'
+year: '2025'
+description: 從定價策略到自助 Dashboard，讓客戶不再需要透過 BD 才能續約與查數據
+section: main
+order: 1
+category: product
+template: product
+tags:
+  - Product Strategy
+  - SaaS Dashboard
+  - Website
+outcome: 規劃官網架構及定價策略並設計自助續約、查看數據服務，讓 Turing Credential Service 從需要 BD 談生意，變成可規模化的自助產品。
+outcomeEn: >-
+  Rebuilt TCS's pricing, website IA, and a self-service dashboard, turning a
+  phone-driven manual business into a scalable self-serve product.
+intro: >-
+  TCS 是一套 B2B 可驗證憑證基礎設施。
+
+  在這個專案中，我負責從零建立提供國際信任感、闡述產品價值的官網，並將原本依賴人工詢價的服務，變為可自助購買、查看用量與管理的
+  Dashboard，協助產品走向可規模化的自助產品。
+role: Product Designer
+time: 2026 / 2 weeks
+team: PM, Frontend, Backend
+skills:
+  - Product Strategy
+  - Information Architecture
+  - UI/UX Design
+  - Website Design
+impact:
+  - 轉型自助流程： 把依賴人工詢價的 B2B 服務，重構成可自助購買、隨開即用的 SaaS 產品
+  - 官網架構規劃： 從零建立 Sitemap 與頁面區塊內容，讓客戶理解產品價值
+  - 後台資訊架構： 設計整合用量監測、計費金流、操作稽核與憑證管理的儀表板結構
+impactEn:
+  - Reframed a manual B2B sales process into a self-service SaaS product flow.
+  - >-
+    Designed dashboard structure for usage, billing, audit, and credential
+    management.
+  - Defined pricing tiers and website information architecture.
+  - Created a scalable structure for both issuer and verifier users.
+imageCount: 0
+---
+## 背景與專案目標
+
+TCS（Turing Credential Service）提供企業級可驗證憑證（Verifiable Credentials）基礎設施\
+透過 API 整合，協助金融、政府與教育等機構建立數位憑證的發行、管理與即時驗證機制，實現防偽審查與跨國界數位信任
+
+![](/images/tcs-dashboard/screenshot-01.png)
+
+### **TCS 的用戶**
+
+1. 發證方（Issuer）：FinTech、銀行企金、政府單位
+   1. 發行 KYB、員工、供應商、執照等憑證
+   1. 需求：檢視發行量、撤銷憑證、確認帳單、向法遵團隊證明稽核軌跡
+1. 驗證方（Verifier）
+   1. 對供應商做 KYB 的銀行、審查申請人的政府單位
+   1. 消費他人發行的憑證
+   1. 需求：收到即驗（發證功能對其無效）
+
+### **問題與專案目標**
+
+1. 前期為了快速上線，使用 AI 開發官網，隨著推廣逐漸擴大，需要建立提供國際信任感、闡述產品價值的官網
+1. 缺乏 Dashboard，客戶需透過客服詢問數據
+1. 沒有定價策略和價格頁、也需透過客服才能訂閱或續約服務
+
+> 缺乏自助訂閱和查閱數據功能，加上官網無法精準傳遞產品價值，導致產品受限於人工對話模式而面臨規模化瓶頸
+
+---
+
+## 挑戰
+
+1. **需要將產品價值清楚的寫在文件和網站中**
+1. **要替一個沒有清楚市場行情的東西定價**
+1. **內容要同時對兩種買家（發證方與驗證方）有說服力**
+1. **不是行銷頁，官網必須簡潔、可信、像可靠的國際組織**
+
+---
+
+## 設計策略與關鍵決策
+
+### 一、從 0 到 1 規劃官網
+
+> 目標：讓 B2B 買家能快速吸收概念、自我定位並進入註冊流程，同時建立國際級基礎設施的信任感
+
+![](/images/tcs-dashboard/sitemap.png)
+
+**網站導航與資訊架構**
+
+- Home：價值主張
+- Pricing：透明階梯與方案比較，消弭詢價斷點
+- Documentation：API 文件與說明
+- （功能上線中）Trust Registry：引導至既有 Portal，強化生態系信任
+- （功能上線中）Login：Dashboard 用戶入口
+
+**首頁區塊規劃**
+
+![](/images/tcs-dashboard/cover.gif)
+
+- Hero Section：聚焦「B2B 可驗證憑證基礎設施」的特點
+- Trust & Compliance：標示資安標準與稽核能力，為銀行與政府單位建立信任基礎
+- WHERE IT FITS：展示 TCS 此新產品可應用的場景、加深導入想像
+
+### 二、定價策略
+
+![](/images/tcs-dashboard/pricing.png)
+
+> 主推的 Growth 方案定價刻意落在台灣 FinTech 的採購甜蜜點
+> 
+> Free Plan 讓 Trust Registry 生態系先長起來
+> 
+> Verifier-only 方案打開只驗憑證不發憑證的銀行市場
+> 
+> 而公開定價本身，對不信任「contact sales」文化的台灣買家，是最有效的敲門磚
+
+---
+
+**定價頁文案策略**
+
+![](/images/tcs-dashboard/pricing.gif)
+
+- **公開全部方案和價格**
+  - 標出 Enterprise 門檻，在預約 demo 前就能自我定位
+- **可掃描的摘要**
+  - 定價頁設計成連負責人都能在 90 秒內讀完的結構
+- **解釋「為什麼」**
+  - 每個方案旁邊都說清楚它為何存在，讓價格成為一個能被理解的決定****\
+- **Free**：$0 · 100 VC（硬上限） · — · 沙盒、獨立 Verified Issuer 入口
+- **Starter**：$1,490 · 500 VC · $2.98 · PoC、試點
+- **Growth（旗艦）**：**$3,990** · **3,000 VC** · **$1.33** · **台灣 FinTech、SME KYB**
+- **Scale**：$9,900 · 15,000 VC · $0.66 · 中型銀行、HR-tech
+- **Enterprise**：from $30k · 客製 · $0.10–0.25 · 國家級銀行、政府
+
+```mermaid
+flowchart LR
+    F["Free<br/>$0<br/>100 VC／年"] --> S["Starter<br/>$1,490／年<br/>$2.98／VC"] --> G["Growth ★ 旗艦<br/>$3,990／年<br/>$1.33／VC"] --> SC["Scale<br/>$9,900／年<br/>$0.66／VC"] --> E["Enterprise<br/>from $30k／年<br/>$0.10–0.25／VC"]
+
+    G -.->|"只驗不發的買家"| V["Verifier-only Pro<br/>Contact us"]
+    F -.->|"獨立信任入口"| TR["+ Trust Registry Tier 1<br/>US$250 一次性 + US$120／年"]
+
+    style G fill:#992517,stroke:#7A1D12,stroke-width:3px,color:#FFFFFF
+    style F fill:#F3F4F6,stroke:#9CA3AF,color:#111827
+    style S fill:#F9FAFB,stroke:#D1D5DB,color:#374151
+    style SC fill:#EFF6FF,stroke:#3B82F6,color:#1E40AF
+    style E fill:#DBEAFE,stroke:#2563EB,color:#1E40AF
+    style V fill:#FEF3C7,stroke:#D97706,color:#92400E
+    style TR fill:#DCFCE7,stroke:#16A34A,color:#166534
+
+```
+
+### 三、Dashboard
+
+> 依照視覺風格進行，並以現有客戶的需求、未來期待客戶能操作的功能，統整排列順序
+> 
+> 每個功能都獨立一頁，讓操作更簡單並降低負擔
+
+![](/images/tcs-dashboard/frame-03.png)
+
+---
+
+## 成效
+
+![](/images/tcs-dashboard/frame-01.png)
+
+1. 設計全程以 PM 和 設計及支援前端角度執行，增加開發效率
+1. 現有 3 家客戶可以獨立使用 Dashboard 監控數據
+1. 積極引入新用戶、使用 Pricing Page 訂閱服務

@@ -1,0 +1,220 @@
+---
+title: "[UI/UX] 讓數位護照比實體護照更快｜TC × DNP 日本飯店入住體驗"
+year: "2024"
+description: TC × 大日本印刷（DNP）跨國身份驗證場景。設計旅客以「護照 VC」完成日本飯店 Kiosk 無實體護照自助入住，並主導上線前的質化易用性研究。
+section: main
+order: 2
+imageCount: 0
+category: product
+template: product
+tags:
+  - Product Design
+  - UX Research
+  - Digital Identity
+outcome: 設計兩階段數位護照入住流程並主導上線前易用性研究，讓旅客用手機比掏實體護照更快完成飯店 Kiosk 自助驗證。
+outcomeEn: Designed a two-stage digital-passport check-in flow and led
+  pre-launch usability research, letting travelers self-verify at hotel kiosks
+  faster than with a physical passport.
+intro: 這是 TC 與大日本印刷 DNP 合作的數位身份驗證場景。我設計旅客以「護照 VC」完成日本飯店 Kiosk
+  自助入住的體驗，讓入住流程不再依賴實體護照與櫃檯人工查驗，並主導上線前的質化易用性研究。
+role: Product Designer
+time: "2024"
+team: PM, DNP, Frontend
+skills:
+  - UX Research
+  - User Flow
+  - Usability Testing
+  - UI Design
+impact:
+  - 設計入住前準備與現場 Kiosk 的兩階段流程。
+  - 主導上線前的質化易用性研究。
+  - 降低高壓 Kiosk 情境下的操作不確定性。
+  - 釐清護照 VC 的信任與隱私溝通。
+impactEn:
+  - Designed the pre-check-in and on-site check-in journey.
+  - Led qualitative usability testing before launch.
+  - Reduced uncertainty in a high-pressure kiosk scenario.
+  - Clarified trust and privacy communication around passport VC.
+---
+
+## 背景與商業脈絡
+
+日本飯店早已導入 Kiosk 自助機台，但**身份驗證這一段仍停留在「實體護照 + 人工確認」**：旅客得拿出護照、櫃檯影印登記、排隊等候；飯店端的 Kiosk 也因為需要人工判讀，無法真正降低成本。而且這套驗證是**一次性、不可複用**的——每次入住都得重新驗證護照。
+
+背後有一門有規模的生意：
+
+- 日本每年約 **600 萬旅客**，DNP 合作飯店體系已覆蓋 **1,000+ 飯店**
+- 驗證行為本身具備交易型營收潛力——飯店以每次成功驗證付費（usage-based）
+- 韓國的 Trip Pass 已驗證這條路可行，TC 等於要成為第二個落地的 Holder Wallet 服務商
+
+設計命題因此很明確：**「怎麼讓旅客願意提前準備好數位護照，並且在現場用手機，比掏實體護照更快地完成入住？」**
+
+---
+
+## 挑戰：三道硬性難題
+
+1. **價值主張完全壓在「更快」上。** 數位護照如果沒有比「掏出實體護照」更快、更直覺，使用者就沒有任何理由切換。效率不是加分項，是這整件事成立的前提。
+2. **兩階段旅程之間，有一道天然的斷裂。** 最關鍵的準備（KYC）發生在出發前——低急迫、容易被延後、還要等 3–5 天審核；但價值兌現卻在現場——時間敏感、在排隊、容錯率極低。
+3. **信任門檻極高。** 我們要請旅客把最敏感的證件——護照——上傳給一個他可能從沒聽過的服務。
+
+---
+
+## 設計策略與關鍵決策
+
+### 1. 用「兩階段旅程」重構整個體驗
+
+我沒有把它當成一條線性流程，而是明確拆成兩個**情境完全不同**的階段來設計：
+
+- **出發前（Pre check-in）**：低急迫、易被忽略。設計重點是**說服 + 引導**——讓使用者在還沒出發時，就先完成註冊與 KYC。
+- **現場（On-site check-in）**：時間敏感、容錯低。設計重點是**最短路徑 + 高確定性**——一掃就過，讓使用者清楚知道「驗證成功了」。
+
+這個「兩階段」的框架，決定了後面所有的設計取捨。
+
+```mermaid
+flowchart TB
+    subgraph PRE["出發前 Pre check-in（低急迫、易延後）"]
+        direction LR
+        P1["KOL／訂房信<br/>進入 Landing Page"] --> P2["註冊／登入"] --> P3["KYC 上傳護照"] --> P4["等待審核 3–5 天"] --> P5["取得護照 VC"]
+    end
+
+    subgraph ONSITE["現場入住 Check-in（時間敏感、容錯低）"]
+        direction LR
+        O1["飯店大廳<br/>開啟數位護照"] --> O2["掃描 Kiosk QR"] --> O3["確認驗證請求<br/>選擇性揭露"] --> O4["出示<br/>驗證成功"] --> O5["完成 Check-in"]
+    end
+
+    PRE -.->|"出發 → 抵達日本"| ONSITE
+
+    style P4 fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#92400E
+    style P5 fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534
+    style O4 fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534
+    style O5 fill:#2563EB,stroke:#1E40AF,stroke-width:3px,color:#FFFFFF
+```
+
+---
+
+### 2. 情境式 Landing Page：「動機 → 信任 → 行動」說服四段
+
+入住場景的 Landing Page 是一個**負責說服的可複用情境模板**（未來租車、退稅都能沿用同一套結構）。
+
+頁面敘事依序降低使用門檻：
+
+- **動機**：為什麼用——手機即護照、一證多用、隱私可控、支援 1,000+ 飯店
+- **使用方式**：三步說清楚：上傳護照取得 VC → 掃描飯店 QR → 完成 check-in
+- **信任建立**：合作飯店品牌牆（官方背書）+ 隱私說明（資料只用於入住）
+- **行動**：Sticky CTA，依使用者狀態切換文案與行為
+
+
+更重要的是**狀態驅動**：頁面識別「未登入 / 已登入未持有護照 VC / 審核中 / 已完成」四種狀態，呈現對應內容即時更新。當使用者已取得護照 VC，就**收起所有說服性內容**，把版面讓給「掃描」——不對已轉換的使用者重複推銷。
+
+---
+
+### 3. 跨越「KYC 等待」的焦慮，把斷點變成流程的一部分
+
+3–5 天的審核等待是整條漏斗最大的流失風險。幾個刻意設計：
+
+- **明確的審核狀態**：顯示「審核中」並停用 CTA，讓使用者知道「現在不是卡住，是在處理」
+- **主動的回頭觸點**：審核通過後以 email 通知「護照驗證成功」，把使用者重新拉回流程
+- **智慧分流前置引導**：點擊上傳時，由系統判斷狀態接力引導——未綁信箱 → 先綁信箱；未 KYC → 先完成身份驗證；已完成 → 直接開啟上傳
+
+目標是讓「等待」從可能放棄的斷點，變成**使用者預期內、且知道下一步的環節**。
+
+---
+
+### 4. 現場最短路徑：開啟 → 掃描 → 確認 → 出示
+
+現場每多一個步驟，都是在排隊、趕時間下的真實摩擦。一旦使用者已持有護照 VC，Landing Page 就**收起所有說明、把「掃描」直接推到最前面**，路徑壓到最短。
+
+驗證完成後，提供明確的成功回饋（驗證成功、出示了什麼、結果如何），降低「我到底有沒有用對」的不確定感——這在 Kiosk 前的高壓情境裡特別重要。
+
+---
+
+### 5. 信任與隱私設計：選擇性揭露 + 外交部交叉查驗
+
+核心是**選擇性揭露**：飯店不一定看到完整護照內容，只收到這次驗證真正需要的欄位。
+
+TC 在送出含台灣護照的驗證回應時，會比對**外交部 open data** 交叉查驗護照是否註銷——讓數位護照不只是「真的」，而且是「現在仍有效的」。
+
+```mermaid
+flowchart TB
+    I["Issuer｜TC / TCS<br/>發行數位身份 VC"] -->|"簽發護照 VC"| H["Holder｜旅客<br/>TC Holder Wallet"]
+    M["外交部 Open Data<br/>護照註銷狀態"] -.->|"交叉查驗（仍有效？）"| I
+    H -->|"掃描 QR、選擇性揭露"| V["Verifier｜DNP 飯店 Kiosk"]
+    V -->|"CATRINA Framework<br/>驗真偽 + 確認受信任 Issuer"| R["自動帶入身份資料<br/>完成 Check-in（無人工）"]
+
+    style I fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF
+    style H fill:#F3F4F6,stroke:#9CA3AF,stroke-width:2px,color:#111827
+    style V fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF
+    style M fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#92400E
+    style R fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534
+```
+
+---
+
+### 6. 一個細節：年齡不該是一個欄位
+
+在盤 KYC 欄位時，我注意到「年齡」被當成一個獨立欄位儲存。但儲存下來的年齡是**某個當下的靜態快照**，不會隨時間更新——因此既不準確、也無法可靠地被出示。正確做法是把它當成**系統根據出生日期即時計算**的衍生值，而非一個被存起來的欄位。
+
+可被驗證的事實，必須是可被信任的事實。
+
+---
+
+## 上線前，我用研究替這次發布除錯
+
+行銷會把流量帶進來，但**產品能不能把流量轉成實際使用？** 這是我在上線前最想先回答的問題。我設計並主導了一場質化易用性研究，核心只想確認三件事：使用者**會不會想用、敢不敢用、能不能順利用**。
+
+### 假設框架：A 動機 / B 信任 / C 易用性
+
+```mermaid
+flowchart TB
+    A["願不願意開始<br/>Awareness → Onboarding"] --> B["敢不敢驗證<br/>KYC → 發證"] --> C["會不會實際使用<br/>Activation（現場）"] --> D["判斷原則<br/>三項皆成立 → 可上線<br/>任一不成立 → 優先修正"]
+
+    A -.->|"假設 A：動機"| A1["現有 check-in 有優化空間？<br/>為了更快願意提前驗證？<br/>『可重複使用』有感？"]
+    B -.->|"假設 B：信任"| B1["願意上傳護照？<br/>接受手機數位身份？<br/>信任資料使用方式？"]
+    C -.->|"假設 C：易用性"| C1["理解兩階段流程？<br/>無協助下完成？<br/>關鍵步驟不卡住？"]
+
+    style A fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF
+    style B fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF
+    style C fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF
+    style D fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534
+    style A1 fill:#F9FAFB,stroke:#D1D5DB,color:#374151
+    style B1 fill:#F9FAFB,stroke:#D1D5DB,color:#374151
+    style C1 fill:#F9FAFB,stroke:#D1D5DB,color:#374151
+```
+
+### 受訪者分群（MECE）：先驗證最該成立的族群
+
+用「使用頻率 × 是否有自助 check-in 經驗」兩個維度做 MECE 分群，優先招募最容易感受到價值的族群：
+
+- **高頻（≥ 2 次／年）**：**Primary（優先招募 4–5 人）** 最易感受效率提升、最易理解可重複使用價值 · **Secondary（觀察 2–3 人）** 觀察是否會因「更快」而轉換行為
+- **低頻（&lt; 2 次／年）**：**低優先** 有經驗但旅遊頻率低 · **排除** 團客／未使用自助流程
+
+
+### 方法與決策框架
+
+- **形式**：1 對 1 訪談（約 60 分鐘），前半理解動機與信任、後半 Prototype 操作測試
+- **Task 1**：取得數位護照（Landing → 註冊 → KYC → 送出並等待審核）
+- **Task 2**：現場 check-in（從 email 開啟 → 掃描 → 確認驗證請求 → 出示）
+- **Go / No-Go 判斷原則**：三項皆成立 → 具備上線條件；任一項不成立 → 視為關鍵問題，優先修正
+
+研究設計的重點在於：這不是「蒐集 feedback」，而是**用清楚的假設與判斷標準，做出能不能上線的決策**。
+
+---
+
+## 設計取捨
+
+- **更接近 Wallet / ID 工具的輕量體驗**：這個場景偏「身份驗證工具」，體驗上朝更輕量、更聚焦驗證的方向設計
+- **不做 Verifier App**：評估後認為價值低；真正值得投入的是改善持證者（CO）掃 QR 的體驗
+- **先跑 POC、後談抽成**：定價採每次成功驗證計費（usage-based），待 POC 驗證成功後才正式談分潤——先證明「會被用」，再談「怎麼收費」
+
+---
+
+## 成效與反思
+
+**追蹤指標（兩層指標，每個都能往回推導）：**
+
+- **落後指標**：飯店成功驗證次數，目標 **45 次／天**
+- **領先指標**：護照 VC 發行量，目標 **4,500 份／月**
+
+推導邏輯：以日本每日台灣旅客 check-in 約 33,000 人估算，DNP 覆蓋 10%（3,300／天），初期保守轉換率 4.5% → 約 150 VC／天 → 月約 4,500；再以 30% 的使用轉換率推得 150 × 30% ≈ **45 驗證／天**。
+
+這個專案讓我體會到，設計一個「身份驗證工具」最難的不是介面，而是**跨越時間與信任的鴻溝**——使用者要在沒有壓力的出發前先付出成本，才能在有壓力的現場收割價值。設計能做的，是用清楚的狀態、主動的觸點與最短的現場路徑，讓這段距離不會中斷；而研究能做的，是在投入行銷與開發前，先誠實地問一句「使用者覺得這是『有更好』還是『差不多』」。
