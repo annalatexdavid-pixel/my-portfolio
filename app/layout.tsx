@@ -19,6 +19,10 @@ const lato = Lato({
 export const metadata: Metadata = {
   title: "Yu Hsuan's Portfolio",
   description: 'UI/UX Designer & Visual Designer — Yu Hsuan Liu',
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
