@@ -73,6 +73,7 @@ export default config({
         titleEn: fields.text({ label: '英文標題 Title EN' }),
 
         intro: fields.text({ label: '內頁開場 Intro', multiline: true }),
+        company: fields.text({ label: 'COMPANY（哪間公司的專案）' }),
         role: fields.text({ label: 'ROLE' }),
         time: fields.text({ label: 'TIME' }),
         team: fields.text({ label: 'TEAM' }),

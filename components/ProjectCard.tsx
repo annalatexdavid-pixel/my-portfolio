@@ -19,7 +19,7 @@ function cleanTitle(title: string): string {
 
 export default function ProjectCard({ slug, title, year, outcome, tags = [], coverImage, coverImage2 }: ProjectCardProps) {
   return (
-    <Link href={`/${slug}`} className="project-card">
+    <Link href={`/${slug}`} className="project-card" target="_blank" rel="noopener noreferrer">
       <div className="project-card-image-wrap">
         {coverImage ? (
           // eslint-disable-next-line @next/next/no-img-element

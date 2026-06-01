@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import Script from 'next/script'
 import { DocumentRenderer } from '@keystatic/core/renderer'
 import ProjectCard from '@/components/ProjectCard'
+import JustifiedRow from '@/components/JustifiedRow'
 import type { Metadata } from 'next'
 
 interface Props {
@@ -45,6 +46,7 @@ export default async function ProjectPage({ params }: Props) {
   const intro = project.intro || project.description
   const impact = lang === 'en' && project.impactEn.length ? project.impactEn : project.impact
   const infoRow = [
+    ['COMPANY', project.company],
     ['ROLE', project.role],
     ['TIME', project.time],
     ['SKILL', project.skills.join(' · ')],
@@ -133,17 +135,23 @@ export default async function ProjectPage({ params }: Props) {
                     const imgMatch = children.trim().match(/^img:([\d,.\w]+)$/)
                     if (imgMatch) {
                       const parts = imgMatch[1].split(',').map(n => n.trim())
+                      const srcs = parts.map(part => {
+                        const hasExt = /\.\w+$/.test(part)
+                        const num = hasExt ? part.replace(/\.\w+$/, '') : part
+                        const ext = hasExt ? part.match(/\.(\w+)$/)?.[1] : 'webp'
+                        return `/images/${project.slug}/image-${num.padStart(3, '0')}.${ext}`
+                      })
+                      if (srcs.length === 1) {
+                        return (
+                          <div className="content-images content-images--single">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={srcs[0]} alt={cleanTitle(project.title)} loading="lazy" />
+                          </div>
+                        )
+                      }
                       return (
-                        <div className={`content-images content-images--${parts.length > 1 ? 'row' : 'single'}`}>
-                          {parts.map(part => {
-                            const hasExt = /\.\w+$/.test(part)
-                            const num = hasExt ? part.replace(/\.\w+$/, '') : part
-                            const ext = hasExt ? part.match(/\.(\w+)$/)?.[1] : 'webp'
-                            const padded = num.padStart(3, '0')
-                            const src = `/images/${project.slug}/image-${padded}.${ext}`
-                            // eslint-disable-next-line @next/next/no-img-element
-                            return <img key={part} src={src} alt={`${cleanTitle(project.title)} ${num}`} loading="lazy" />
-                          })}
+                        <div className="content-images">
+                          <JustifiedRow srcs={srcs} gap={6} />
                         </div>
                       )
                     }

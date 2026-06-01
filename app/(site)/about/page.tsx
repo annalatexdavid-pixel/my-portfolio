@@ -1,5 +1,6 @@
 import { getSettings } from '@/lib/content'
 import { getLang, getDict } from '@/lib/i18n'
+import SkillsSection from '@/components/SkillsSection'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -54,6 +55,9 @@ export default async function AboutPage() {
             onError={undefined}
           />
         </div>
+      </div>
+      <div style={{ marginTop: 64 }}>
+        <SkillsSection />
       </div>
     </div>
   )
