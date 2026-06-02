@@ -5,9 +5,10 @@ export type Lang = 'zh' | 'en'
 export async function getLang(): Promise<Lang> {
   try {
     const store = await cookies()
-    return store.get('lang')?.value === 'en' ? 'en' : 'zh'
+    const val = store.get('lang')?.value
+    return val === 'zh' ? 'zh' : 'en'
   } catch {
-    return 'zh'
+    return 'en'
   }
 }
 
