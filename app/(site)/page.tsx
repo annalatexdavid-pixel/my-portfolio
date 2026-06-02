@@ -10,10 +10,11 @@ export const metadata: Metadata = {
   description: 'Product & visual designer turning complex SaaS workflows, brand systems, and business goals into clear, usable, memorable experiences. Based in Taipei, Taiwan.',
 }
 
-export default async function HomePage() {
+export default async function HomePage({ searchParams }: { searchParams: Promise<{ tab?: string }> }) {
   const settings = await getSettings()
   const lang = await getLang()
   const d = getDict(lang)
+  const { tab: initialTab } = await searchParams
 
   const withCovers = await Promise.all(
     (await getProjects()).map(async p => ({
@@ -57,6 +58,7 @@ export default async function HomePage() {
           heading={d.work.heading}
           subheading={d.work.subheading}
           tabs={d.work.tabs}
+          initialTab={initialTab}
         />
       </section>
 

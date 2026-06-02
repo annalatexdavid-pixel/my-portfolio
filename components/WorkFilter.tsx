@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useSearchParams, useRouter, usePathname } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import ProjectCard from './ProjectCard'
 
 type Tab = 'uiux' | 'visual' | 'all'
@@ -25,6 +25,7 @@ interface WorkFilterProps {
   heading: string
   subheading?: string
   tabs: { uiux: string; visual: string; all: string }
+  initialTab?: string
 }
 
 // UI/UX  → product work
@@ -37,23 +38,19 @@ function matchTab(p: ProjectItem, tab: Tab): boolean {
   return p.category !== 'product' && p.section === 'main'
 }
 
-export default function WorkFilter({ projects, label, heading, subheading, tabs }: WorkFilterProps) {
-  const searchParams = useSearchParams()
+export default function WorkFilter({ projects, label, heading, subheading, tabs, initialTab }: WorkFilterProps) {
   const router = useRouter()
   const pathname = usePathname()
 
-  const initialTab = (['uiux', 'visual', 'all'].includes(searchParams.get('tab') ?? '') ? searchParams.get('tab') : 'uiux') as Tab
-  const [tab, setTab] = useState<Tab>(initialTab)
+  const validTab = (['uiux', 'visual', 'all'].includes(initialTab ?? '') ? initialTab : 'uiux') as Tab
+  const [tab, setTab] = useState<Tab>(validTab)
 
   useEffect(() => {
-    const params = new URLSearchParams(searchParams.toString())
     if (tab === 'uiux') {
-      params.delete('tab')
+      router.replace(pathname, { scroll: false })
     } else {
-      params.set('tab', tab)
+      router.replace(`${pathname}?tab=${tab}`, { scroll: false })
     }
-    const qs = params.toString()
-    router.replace(`${pathname}${qs ? `?${qs}` : ''}`, { scroll: false })
   }, [tab])
 
   const filtered = projects.filter(p => matchTab(p, tab))
