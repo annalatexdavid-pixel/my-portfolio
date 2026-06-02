@@ -98,6 +98,7 @@ export default config({
           formatting: true,
           dividers: true,
           links: true,
+          code: true,
         }),
       },
     }),
