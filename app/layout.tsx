@@ -18,11 +18,23 @@ const lato = Lato({
 })
 
 export const metadata: Metadata = {
-  title: "Yu Hsuan's Portfolio",
-  description: 'UI/UX Designer & Visual Designer — Yu Hsuan Liu',
+  title: "Michelle Liu — Portfolio",
+  description: 'Product & Visual Designer — Michelle Liu',
   icons: {
     icon: '/icon.svg',
     shortcut: '/icon.svg',
+  },
+  openGraph: {
+    title: "Michelle Liu — Portfolio",
+    description: 'Product & Visual Designer — Michelle Liu',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Michelle Liu — Portfolio",
+    description: 'Product & Visual Designer — Michelle Liu',
+    images: ['/og-image.png'],
   },
 }
 
