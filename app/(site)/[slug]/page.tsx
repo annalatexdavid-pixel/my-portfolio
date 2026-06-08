@@ -45,7 +45,7 @@ export default async function ProjectPage({ params }: Props) {
   const showMermaid = documentHasMermaid(doc)
 
   const displayTitle = lang === 'en' && project.titleEn ? project.titleEn : cleanTitle(project.title)
-  const intro = project.intro || project.description
+  const intro = lang === 'en' && project.introEn ? project.introEn : (project.intro || project.description)
   const impact = lang === 'en' && project.impactEn.length ? project.impactEn : project.impact
   const infoRow = [
     ['COMPANY', project.company],

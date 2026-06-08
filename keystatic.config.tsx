@@ -72,7 +72,8 @@ export default config({
         outcomeEn: fields.text({ label: '卡片成果句（英）Outcome EN', multiline: true }),
         titleEn: fields.text({ label: '英文標題 Title EN' }),
 
-        intro: fields.text({ label: '內頁開場 Intro', multiline: true }),
+        intro: fields.text({ label: '內頁開場 Intro（中）', multiline: true }),
+        introEn: fields.text({ label: '內頁開場 Intro（英）', multiline: true }),
         company: fields.text({ label: 'COMPANY（哪間公司的專案）' }),
         role: fields.text({ label: 'ROLE' }),
         time: fields.text({ label: 'TIME' }),

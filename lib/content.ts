@@ -20,6 +20,7 @@ export interface Project {
   outcome: string
   outcomeEn: string
   intro: string
+  introEn: string
   company: string
   role: string
   time: string
@@ -62,6 +63,7 @@ function toProject(slug: string, e: any): Project {
     outcome: e.outcome || e.description || '',
     outcomeEn: e.outcomeEn || '',
     intro: e.intro || '',
+    introEn: e.introEn || '',
     company: e.company || '',
     role: e.role || '',
     time: e.time || e.year || '',
