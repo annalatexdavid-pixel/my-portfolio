@@ -119,6 +119,16 @@ export async function getProjectContent(slug: string): Promise<any> {
   }
 }
 
+export async function getProjectContentEn(slug: string): Promise<string | null> {
+  try {
+    const filePath = path.join(PROJECTS_DIR, slug, 'content-en.md')
+    if (!fs.existsSync(filePath)) return null
+    return fs.readFileSync(filePath, 'utf8')
+  } catch {
+    return null
+  }
+}
+
 // ── Settings ────────────────────────────────────────────────────────────────
 const SETTINGS_FILE = path.join(process.cwd(), 'content', 'settings', 'index.yaml')
 

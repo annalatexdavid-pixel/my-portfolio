@@ -94,7 +94,14 @@ export default config({
 
         // ── Visual body editor ──
         content: fields.document({
-          label: '內文 Body',
+          label: '內文 Body（中文）',
+          formatting: true,
+          dividers: true,
+          links: true,
+        }),
+
+        contentEn: fields.document({
+          label: '內文 Body（英文）',
           formatting: true,
           dividers: true,
           links: true,

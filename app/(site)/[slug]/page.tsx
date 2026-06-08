@@ -1,4 +1,4 @@
-import { getProject, getProjects, getProjectContent, documentHasMermaid } from '@/lib/content'
+import { getProject, getProjects, getProjectContent, getProjectContentEn, documentHasMermaid } from '@/lib/content'
 import { getProjectHero, getProjectCover, getProjectCover2 } from '@/lib/images'
 import { getLang, getDict } from '@/lib/i18n'
 import { notFound } from 'next/navigation'
@@ -6,6 +6,7 @@ import Script from 'next/script'
 import { DocumentRenderer } from '@keystatic/core/renderer'
 import ProjectCard from '@/components/ProjectCard'
 import JustifiedRow from '@/components/JustifiedRow'
+import MarkdownContent from '@/components/MarkdownContent'
 import type { Metadata } from 'next'
 
 interface Props {
@@ -35,9 +36,10 @@ export default async function ProjectPage({ params }: Props) {
   const lang = await getLang()
   const d = getDict(lang)
 
-  const [hero, doc] = await Promise.all([
+  const [hero, doc, contentEnRaw] = await Promise.all([
     getProjectHero(project.slug),
     getProjectContent(project.slug),
+    getProjectContentEn(project.slug),
   ])
 
   const showMermaid = documentHasMermaid(doc)
@@ -118,7 +120,11 @@ export default async function ProjectPage({ params }: Props) {
           </div>
         )}
 
-        {doc && (
+        {lang === 'en' && contentEnRaw && (
+          <MarkdownContent content={contentEnRaw} slug={project.slug} title={displayTitle} />
+        )}
+
+        {(lang !== 'en' || !contentEnRaw) && doc && (
           <div className="project-content">
             <DocumentRenderer
               document={doc}
