@@ -24,10 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: `Michelle Liu — ${project.title}` }
 }
 
-const STRIP_TAGS = ['UI/UX', 'Design System', 'Brand', 'Visual', 'Motion', '商業設計']
+// Strip all bracket tags except [AI Builder]
 function cleanTitle(title: string): string {
   return title.replace(/^\s*\[([^\]]*)\]\s*/, (match, tag) =>
-    STRIP_TAGS.includes(tag.trim()) ? '' : match
+    tag.trim() === 'AI Builder' ? match : ''
   ).trim()
 }
 
