@@ -12,9 +12,12 @@ interface ProjectCardProps {
   coverImage2?: string | null
 }
 
-// Strip the leading "[類別]" bracket tag from the stored title for cleaner cards
+// Strip known category tags but keep feature tags like [AI Builder]
+const STRIP_TAGS = ['UI/UX', 'Design System', 'Brand', 'Visual', 'Motion', '商業設計']
 function cleanTitle(title: string): string {
-  return title.replace(/^\s*\[[^\]]*\]\s*/, '').trim()
+  return title.replace(/^\s*\[([^\]]*)\]\s*/, (match, tag) =>
+    STRIP_TAGS.includes(tag.trim()) ? '' : match
+  ).trim()
 }
 
 export default function ProjectCard({ slug, title, year, outcome, tags = [], coverImage, coverImage2 }: ProjectCardProps) {
