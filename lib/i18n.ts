@@ -37,7 +37,7 @@ const dict = {
       ],
       cta1: '查看作品',
       cta2: '與我聯繫',
-      tags: ['產品設計', '視覺設計', 'B2B2C SaaS'],
+      tags: ['產品設計', '視覺設計', '包裝設計', 'B2B2C SaaS'],
     },
     about: {
       label: '關於我',
@@ -138,7 +138,7 @@ const dict = {
       ],
       cta1: 'View Work',
       cta2: 'Get in Touch',
-      tags: ['Product Design', 'Visual Design', 'B2B2C SaaS'],
+      tags: ['Product Design', 'Visual Design', 'Packaging Design', 'B2B2C SaaS'],
     },
     about: {
       label: 'About',
