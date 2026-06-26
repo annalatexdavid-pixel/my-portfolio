@@ -47,6 +47,22 @@ export default function MarkdownContent({ content, slug, title }: Props) {
         i++
       }
       const codeContent = codeLines.join('\n').trim()
+      const youtubeMatch = codeContent.match(/^youtube:([\w-]+)$/)
+      if (youtubeMatch) {
+        const videoId = youtubeMatch[1]
+        nodes.push(
+          <div key={`yt-${nodes.length}`} className="content-youtube">
+            <iframe
+              src={`https://www.youtube.com/embed/${videoId}`}
+              title="YouTube video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        )
+        i++
+        continue
+      }
       const imgMatch = codeContent.match(/^img:([\d,.\w]+)$/)
       if (imgMatch) {
         const parts = imgMatch[1].split(',').map(n => n.trim())
