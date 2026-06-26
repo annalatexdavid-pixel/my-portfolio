@@ -752,6 +752,21 @@ a { color: inherit; text-decoration: none; }
   fill: #111 !important;
 }
 
+.project-content .content-youtube {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin: 8px 0;
+}
+
+.project-content .content-youtube iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 .project-content .content-images {
   display: flex;
   flex-direction: column;
