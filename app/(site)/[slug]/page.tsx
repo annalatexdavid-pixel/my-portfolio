@@ -141,6 +141,19 @@ export default async function ProjectPage({ params }: Props) {
                   ),
                   code: ({ children, language }) => {
                     if (language === 'mermaid') return <div className="mermaid">{children}</div>
+                    const youtubeMatch = children.trim().match(/^youtube:([\w-]+)$/)
+                    if (youtubeMatch) {
+                      return (
+                        <div className="content-youtube">
+                          <iframe
+                            src={`https://www.youtube.com/embed/${youtubeMatch[1]}`}
+                            title="YouTube video"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                        </div>
+                      )
+                    }
                     const imgMatch = children.trim().match(/^img:([\d,.\w]+)$/)
                     if (imgMatch) {
                       const parts = imgMatch[1].split(',').map(n => n.trim())
